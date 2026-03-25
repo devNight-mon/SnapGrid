@@ -9,18 +9,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 
 /**
- * Created by Efe Şen on 12,03,2026
+ * Created by Efe Şen on 12,03, 2026
  */
 object RetrofitInstance {
 
-    // OkHttpClient ekleyerek cache yapılandırması
     private val okHttpClient = OkHttpClient.Builder()
         .cache(Cache(File(SnapGridApp.instance.cacheDir, "http_cache"), 50L * 1024L * 1024L))
         .build()
 
     val retrofit = Retrofit.Builder()
         .baseUrl("https://picsum.photos/")
-        .client(okHttpClient) // Bu client'ı ekleyin
+        .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         val rcy = binding.recyclerViewGallery
         val layoutManager = GridLayoutManager(this, 3)
-        layoutManager.initialPrefetchItemCount = 6 // her satır için ekstra 2 satır önceden yükle
+        layoutManager.initialPrefetchItemCount = 6
         rcy.layoutManager = layoutManager
         rcy.setHasFixedSize(true)
         rcy.itemAnimator = null
@@ -49,16 +49,15 @@ class MainActivity : AppCompatActivity() {
         adapter = PhotoAdapter(this)
         rcy.adapter = adapter
 
-        // Scroll pozisyonu takip etmek için
+        // To track the scroll position
         var lastFirstVisible = 0
 
         rcy.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
-                val firstVisible =
-                    (rv.layoutManager as GridLayoutManager).findFirstVisibleItemPosition()
+                val firstVisible = (rv.layoutManager as GridLayoutManager).findFirstVisibleItemPosition()
 
                 if (firstVisible < lastFirstVisible) {
-                    // Yukarı scroll → görünmeyecek itemları iptal et
+                    // Scroll up → Hide items that won't be visible
                     (rv.adapter as? PhotoAdapter)?.cancelInvisibleJobs(rv)
                 }
 
