@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.SnapGrid" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementReturnTransition">@android:transition/move</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="Theme.SnapGrid" parent="Base.Theme.SnapGrid" />
+
+    <!-- Detay ekranı için özel pürüzsüz geçiş teması -->
+    <style name="Theme.SnapGrid.Detail" parent="Theme.SnapGrid">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowShowWallpaper">true</item>
+    </style>
+
+    <style name="RoundedSquare" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+</resources>
